@@ -1,0 +1,921 @@
+PREFIX :     <http://www.unicam.it/cs/serenadileonardo/microscope-ontology/>
+PREFIX owl:  <http://www.w3.org/2002/07/owl#>
+PREFIX rdf:  <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+PREFIX rdfs: <http://www.w3.org/2000/01/rdf-schema#>
+PREFIX xml:  <http://www.w3.org/XML/1998/namespace>
+PREFIX xsd:  <http://www.w3.org/2001/XMLSchema#>
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector>
+        rdf:type          owl:Class;
+        rdfs:comment      "In electron microscopes, a “detector” is an essential component that detects electrons or electron interactions with the object under examination to generate an image.";
+        rdfs:label        "Detector";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Imaris>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "One of the best known software for 3D analysis of microscopic images, particularly used in cell biology and tissue studies.";
+        rdfs:label    "Imaris" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Cryogenic_Pump>
+        rdf:type  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , owl:NamedIndividual .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "Used for analysing the surface characteristics of materials, such as roughness, topography and indentation depth.";
+        rdfs:label        "Surface analysis";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Polarization_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "Used to analyze the optical properties of materials, such as birefringence, and to study the internal structure of samples.";
+        rdfs:label    "Polarization filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#CellProfiler>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "An open-source software for automated cellular morphology analysis.";
+        rdfs:label    "CellProfiler" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Transmitted_Electron_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Transmitted_Electron_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "An instrument for giving magnified images of very small objects, revealing otherwise invisible details.";
+        rdfs:label        "Microscope";
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "They use electron beams instead of visible light to form an enlarged image of the sample.";
+        rdfs:label        "Electronic microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>;
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Cannon>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope_Component>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                            owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "It uses specific lights to excite fluorophores in the sample, emitting visible light.\nWidely used in molecular biology and immunology.";
+        rdfs:label        "Fluerescence microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Metallographic_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase_Contrast_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase_Contrast_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "Enhances the contrast of transparent samples without staining.\nUsed in cell biology to observe live cells.";
+        rdfs:label        "Phase contrast microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Backscattered_Electron_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Backscattered_Electron_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "Particle analysis software makes it possible to identify, count and characterise the particles present in samples observed through an optical microscope.";
+        rdfs:label        "Particle analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Ionic_Pump>
+        rdf:type  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , owl:NamedIndividual .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Turbo_Molecular_Pump>
+        rdf:type  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , owl:NamedIndividual .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System>
+        rdf:type          owl:Class;
+        rdfs:comment      "The illumination system of a microscope is a key component that provides the light needed to illuminate the sample so that it can be viewed through the microscope.";
+        rdfs:label        "Illumination system";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope_Component>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Ocular> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope>
+        rdf:type         owl:Class;
+        rdfs:comment     "Provides a three-dimensional view of the specimen.\nUsed for dissections, precision work and observation of relatively large objects.";
+        rdfs:label       "Stereoscopic microscope";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ] .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Secondary_Electron_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Secondary_Electron_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Ocular>
+        rdf:type         owl:Class;
+        rdfs:comment     "It is the optical component of a microscope positioned at the top of the microscope's body tube. Its function is to magnify the image formed by the objective lens and to allow the viewer to observe the magnified specimen";
+        rdfs:label       "Ocular";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Light_intensity>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Some microscopes allow the light intensity of the illumination system to be customised to the specific observation requirements. it is expressed in candels";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System>;
+        rdfs:label    "Light intensity";
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope_Component>
+        rdf:type         owl:Class;
+        rdfs:comment     "This class describe the component that only a optical microscope can have";
+        rdfs:label       "Optical microscope component";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Ocular_Enlargement>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The enlargment of an ocular in a microscope is a measurement that indicates how many times the magnified image is seen by the observer's eye through the eyepiece";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Ocular>;
+        rdfs:label    "Ocular enlargment";
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source>
+        rdf:type          owl:Class;
+        rdfs:comment      "The electron source of a microscope is the part of the microscope responsible for emitting the electrons used to form the electron beam. This source can take many forms and types, but in general it consists of a material capable of releasing electrons when stimulated.";
+        rdfs:label        "Electron source";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Laser>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System> , owl:NamedIndividual;
+        rdfs:label  "Laser" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Metallographic_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "Crucial for analysis and research in the fields of metallurgy and materials science. Examinations of the surface structure and composition of metals, analysis of defects in materials.\nUsed for quality control and understanding material properties, which is crucial for industry and engineering.";
+        rdfs:label        "Metallographic microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "1"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase_Contrast_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Transmission_Electron_Microscope>
+        rdf:type         owl:Class;
+        rdfs:comment     "It uses an electron beam passing through the sample to create high-resolution images.\nIdeal for observing internal structures of cells and materials at the atomic level.";
+        rdfs:label       "Transmission electron microscope";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope>;
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                         ] .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#OMERO>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "A microscopy data management platform that enables storage, sharing, and analysis of large datasets.";
+        rdfs:label    "OMERO" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Anti-reflection_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "Used to reduce reflections and improve light transmission through the microscope's optical system, enabling clearer and more detailed viewing of samples.";
+        rdfs:label    "Anti-reflection filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase-contrast_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "Used to improve the contrast of images of transparent samples, allowing details that might otherwise be difficult to discern to be visualized.";
+        rdfs:label    "Phase-contrast filters" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump>
+        rdf:type         owl:Class;
+        rdfs:comment     "Creates a vacuum in the special chamber, in which the sample is contained, and in the main tube, through which the electron beam passes";
+        rdfs:label       "Vacuum pump";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>
+        rdf:type     owl:AsymmetricProperty , owl:ObjectProperty;
+        rdfs:domain  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>;
+        rdfs:label   "is composed by";
+        rdfs:range   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software>
+        rdf:type  owl:Class .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Camera_Resolution>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Camera resolution indicates the level of detail that can be captured in images. It is measured in pixels.";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Camera>;
+        rdfs:label    "Camera resolution";
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#SpectraSuite>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Software for spectral analysis of data acquired with spectrometers.";
+        rdfs:label    "SpectraSuite" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "This type of software is designed for analyzing the size and shape of structures observed through the microscope.";
+        rdfs:label        "Morphological analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Volocity_Quantitation>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Ideal for time-lapse image analysis.";
+        rdfs:label    "Volocity_Quantitation" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Protective_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "Used to protect the specimen and microscope eyepieces from damage caused by bright light or harmful light sources.";
+        rdfs:label    "Protective filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fiji>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "A distribution of ImageJ that includes specific plugins for particle analysis.";
+        rdfs:label    "Fiji" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#ENVI>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Used for spectral analysis of hyperspectral and multispectral images.";
+        rdfs:label    "ENVI" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "Used in fluorescence microscopes to select specific wavelengths of exciting light and to block out unwanted excitation light, thereby improving image contrast and resolution.";
+        rdfs:label    "Fluorescence filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Halogene>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System> , owl:NamedIndividual;
+        rdfs:label  "Halogene" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Wavelength_Dispersive_X-ray_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Wavelength_Dispersive_X-ray_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "This type of software is used to analyze temporal data acquired by time-lapse microscopy.";
+        rdfs:label        "Time analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter>
+        rdf:type          owl:Class;
+        rdfs:comment      "A microscope filter is an optical device that selectively transmits or blocks specific wavelengths of light to enhance contrast, isolate specific features, or reduce unwanted noise in the observed image. Filters are used to improve the clarity and quality of the images produced by the microscope, and they can be applied to various microscopy techniques, including fluorescence, phase contrast, and polarization microscopy.";
+        rdfs:label        "Filter";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Mixed_Microscope_Componet>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Thermoemission_Cannon>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Cannon> , owl:NamedIndividual;
+        rdfs:label  "Thermoemission_Cannon" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_version>
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        rdfs:range   xsd:double .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Volocity>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Software for fluorescence image analysis that offers advanced functionalities for data management and processing.";
+        rdfs:label    "Volocity" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Producer_Company>
+        rdf:type     owl:DatatypeProperty;
+        rdfs:domain  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        rdfs:range   xsd:string .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+        rdf:type       owl:AsymmetricProperty , owl:ObjectProperty;
+        rdfs:comment   "A microscope has installed the software analysis";
+        rdfs:domain    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>;
+        rdfs:label     "has installed";
+        rdfs:range     <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software>;
+        owl:inverseOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_installed_on> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>
+        rdf:type         owl:Class;
+        rdfs:comment     "This type of software specializes in analyzing three-dimensional images acquired by confocal microscopy or other 3-D imaging techniques, enabling visualization, segmentation, and analysis of three-dimensional structure";
+        rdfs:label       "3D analysis software";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective>
+        rdf:type         owl:Class;
+        rdfs:comment     "The objective of a microscope is an essential optical component located at the bottom of the microscope's optical system, close to the specimen to be observed. It is responsible for collecting and focusing light from the specimen to create a magnified, sharp image that can be viewed through the eyepiece or captured by a camera.";
+        rdfs:label       "Objective";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#MorphoJ>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Software specifically for geometric morphometric analysis.";
+        rdfs:label    "MorphoJ" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component>
+        rdf:type         owl:Class;
+        rdfs:comment     "This class decsribe the component that only an electronic microscope can have";
+        rdfs:label       "Electronic microscopic component";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Working_Distance>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "This is the distance between the lens and the specimen when the image is in focus. A larger working distance can provide more space to work under the lens.\nIt is expressed in mm.";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective>;
+        rdfs:label    "Working distance";
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#High-angle_Diffuse_Electron_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "High-angle_Diffuse_Electron_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>
+        rdf:type         owl:Class;
+        rdfs:label       "Software analysis";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "This type of software is used for the analysis of large datasets generated by high-resolution or high-throughput microscopy techniques.";
+        rdfs:label        "Massive data analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Huygens>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Designed to process large volumes of microscopy data with advanced deconvolution and other processing techniques.";
+        rdfs:label    "Huygens" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Mechanical_Pump>
+        rdf:type  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , owl:NamedIndividual .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Gas_Discharge>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System> , owl:NamedIndividual;
+        rdfs:label  "Gas_Discharge" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#MountainsMap>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Advanced software for topographical analysis and surface characterization.";
+        rdfs:label    "MountainsMap" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Compound_Optical_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "The main characteristic of a compound optical microscope is its ability to provide a high degree of magnification and resolution through the use of multiple optical lenses.";
+        rdfs:label        "Compound optical microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase_Contrast_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Metallographic_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Confocal_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>
+        rdf:type         owl:Class;
+        rdfs:comment     "They use visible light to form an enlarged image of the sample.";
+        rdfs:label       "Optical microscope";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>;
+        rdfs:subClassOf  [ rdf:type                  owl:Restriction;
+                           owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component>;
+                           owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>;
+                           owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>
+                         ];
+        rdfs:subClassOf  [ rdf:type                     owl:Restriction;
+                           owl:minQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                           owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System>;
+                           owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by>
+                         ] .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Confocal_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "Uses a laser for optical scanning at different depths, creating high-resolution three-dimensional images.\nUsed in cell biology and neurobiology.";
+        rdfs:label        "Confocal microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Optical_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Phase_Contrast_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Microscope> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Metallographic_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Gwyddion>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "A free software for the analysis of scanning probe microscopy (SPM) data and surface visualization.";
+        rdfs:label    "Gwyddion" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#LED>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Illumination_System> , owl:NamedIndividual;
+        rdfs:label  "LED" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Acquisition_speed>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "Capture speed refers to the speed at which the camera can capture images. This is particularly important for applications that require the observation of dynamic or fast processes, it is exspressed in frame/sec.";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Camera>;
+        rdfs:label    "Acquisition speed";
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Zen_Blue>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Ideal for the visualization and analysis of 3D fluorescence images.";
+        rdfs:label    "Zen_Blue" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Numerical_Opening>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The ability of the condenser to collect and focus light from the light source. A larger numerical aperture allows for greater resolution and image clarity";
+        rdfs:label    "Numerical opening";
+        rdfs:range    xsd:double .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#UV/IR_Filter>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:label  "Used to block ultraviolet (UV) and infrared (IR) light while observing samples, thus improving image quality and resolution." , "UV/IR filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Color_Correction_Filter>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> , owl:NamedIndividual;
+        rdfs:comment  "These filters are used to correct color deviations in the image, ensuring accurate color reproduction.";
+        rdfs:label    "Color correction filter" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Field_Emission_Source>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source> , owl:NamedIndividual;
+        rdfs:comment  "A heated tungsten filament (around 2700 K) emits electrons by thermionic emission.";
+        rdfs:label    "Field_Emission_Source" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology>
+        rdf:type  owl:Ontology .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective_Enlargment>
+        rdf:type      owl:DatatypeProperty;
+        rdfs:comment  "The lens has a specific multiplication that determines how much the image is magnified in relation to the actual object." , "Objective enlargment";
+        rdfs:domain   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective>;
+        rdfs:range    xsd:int .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Camera>
+        rdf:type          owl:Class;
+        rdfs:comment      "A microscope's camera is an electronic device that is used to capture images of the specimen observed through the microscope.";
+        rdfs:label        "Camera";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Mixed_Microscope_Componet>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Objective> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Filter> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Mixed_Microscope_Componet>
+        rdf:type         owl:Class;
+        rdfs:comment     "This class describe the component that more than one type of microscope can have";
+        rdfs:label       "Mixed component";
+        rdfs:subClassOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#MetaMorph>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Software for time-lapse image analysis with powerful processing and quantification tools.";
+        rdfs:label    "MetaMorph" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Tungsten_Filament>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source> , owl:NamedIndividual;
+        rdfs:label  "Tungsten_Filament" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Amira>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Used for analysis and visualization of complex 3D data from various imaging techniques.";
+        rdfs:label    "Amira" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#ImageJ>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "A highly versatile open-source software for quantitative measurements in microscopic images.";
+        rdfs:label    "ImageJ" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "This type of software is designed for the analysis of spectra obtained by spectroscopic microscopy.";
+        rdfs:label        "Spectral Analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component>
+        rdf:type          owl:Class;
+        rdfs:comment      "A component of a microscope refers to any individual part or element that contributes to the overall functionality of the microscope.";
+        rdfs:label        "Microscope component";
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#compose>
+        rdf:type       owl:AsymmetricProperty , owl:ObjectProperty;
+        rdfs:comment   "A component compose a microscope";
+        rdfs:domain    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope_Component>;
+        rdfs:label     "compose";
+        rdfs:range     <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope>;
+        owl:inverseOf  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_composed_by> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particles_Plus>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> , owl:NamedIndividual;
+        rdfs:comment  "Software for particle analysis offering advanced segmentation and measurement functionalities.";
+        rdfs:label    "Particles_Plus" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "Measurement software allows quantitative measurements of the dimensions and characteristics of samples viewed through an optical microscope. They can be used to measure lengths, areas, diameters, angles and other dimensions of sample structures.";
+        rdfs:label        "Measurement software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Energy_Dispersive_X-ray_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Energy_Dispersive_X-ray_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Schottky_Source>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source> , owl:NamedIndividual;
+        rdfs:label  "Schottky_Source" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>
+        rdf:type          owl:Class;
+        rdfs:comment      "This type of software is specifically designed for analyzing fluorescent images acquired through the microscope.";
+        rdfs:label        "Fluorescence analysis software";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software_Analysis>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#ABC>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Stereoscopic_Microscope>;
+        rdfs:label  "ABC" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electron_Energy_Loss_Detector>
+        rdf:type    <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> , owl:NamedIndividual;
+        rdfs:label  "Electron_Energy_Loss_Detector" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#is_installed_on>
+        rdf:type     owl:AsymmetricProperty , owl:ObjectProperty;
+        rdfs:domain  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Software>;
+        rdfs:range   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Field_Emission_Cannon>
+        rdf:type      <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Cannon> , owl:NamedIndividual;
+        rdfs:comment  "Emette elettroni utilizzando un forte campo elettrico applicato a una punta estremamente affilata (spesso di tungsteno), senza necessità di riscaldamento.";
+        rdfs:label    "Field_Emission_Cannon" .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Scanning_Electron_Microscope>
+        rdf:type          owl:Class;
+        rdfs:comment      "Scans the surface of the sample with an electron beam, creating detailed three-dimensional images.\nUsed for topographical and compositional analysis of surfaces.";
+        rdfs:label        "Scanning electron microscope";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope>;
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Fluorescence_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Surface_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#3D_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Particle_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Massive_Data_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Spectral_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Measuring_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        rdfs:subClassOf   [ rdf:type                  owl:Restriction;
+                            owl:onClass               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Time_Analysis_Software>;
+                            owl:onProperty            <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>;
+                            owl:qualifiedCardinality  "0"^^xsd:nonNegativeInteger
+                          ];
+        rdfs:subClassOf   [ rdf:type                     owl:Restriction;
+                            owl:maxQualifiedCardinality  "1"^^xsd:nonNegativeInteger;
+                            owl:onClass                  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Morphological_Analysis_Software>;
+                            owl:onProperty               <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#has_installed>
+                          ];
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Transmission_Electron_Microscope> .
+
+<http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Cannon>
+        rdf:type          owl:Class;
+        rdfs:comment      "The cannon of a microscope is one of the key elements that determines the performance of the electron microscope, influencing factors such as resolution, signal intensity and electron beam stability.";
+        rdfs:label        "Cannon";
+        rdfs:subClassOf   <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electronic_Microscope_Component>;
+        owl:disjointWith  <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Vacuum_Pump> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Electrons_source> , <http://www.unicam.it/cs/serenadileonardo/microscope-ontology#Detector> .

@@ -1,0 +1,199 @@
+.root {
+    -fx-background-color:  #ffffff;
+    -fx-padding: 20px;
+}
+
+.grid-pane {
+    -fx-background-color: #ffffff;
+    -fx-border-color: #c8e6c9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 5px;
+}
+
+.menu-button {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #388e3c;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-padding: 5px 10px;
+    -fx-border-color: #c8e6c9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-background-radius: 3px;
+}
+
+.menu-button .arrow {
+    -fx-background-color: #e8f5e9;
+}
+
+.menu-item {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #388e3c;
+    -fx-font-size: 14px;
+}
+
+.menu-item:hover {
+    -fx-background-color: #c8e6c9;
+}
+
+.button {
+    -fx-background-color:#388e3c;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 17px;
+    -fx-font-weight: bold;
+    -fx-padding: 10px 20px;
+    -fx-border-radius: 10px;
+    -fx-background-radius: 10px;
+}
+
+.button:hover {
+    -fx-background-color: #328036;
+}
+
+.label {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #388e3c;
+    -fx-padding: 5px 0;
+}
+
+.text-field {
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+    -fx-text-fill: #388e3c;
+    -fx-border-color: #388e3c;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 10px;
+}
+
+.text-area {
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #333333;
+    -fx-border-color: #c8e6c9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+    -fx-padding: 5px;
+}
+
+.combo-box {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #ffffff;
+    -fx-border-color: #66bb6a;
+    -fx-border-width: 1px;
+    -fx-border-radius: 10px;
+    -fx-padding: 5px;
+}
+
+.combo-box .list-cell {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .list-cell:filled:selected {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #ffffff;
+}
+
+.combo-box .combo-box-popup .list-view .list-cell {
+    -fx-font-size: 15px;
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+    -fx-text-fill: #388e3c;
+}
+
+.combo-box .combo-box-popup .list-view .list-cell:hover {
+    -fx-background-color: #c8e6c9;
+}
+
+.list-view {
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+    -fx-border-color: #66bb6a;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.list-view .list-cell {
+    -fx-font-weight: bold;
+    -fx-background-color: #ffffff;
+    -fx-font-size: 15px;
+    -fx-text-fill: #388e3c;
+}
+
+.list-view .list-cell:hover {
+    -fx-background-color: #c8e6c9;
+}
+
+.check-box {
+    -fx-font-weight: bold;
+    -fx-text-fill: #388e3c;
+    -fx-font-size: 14px;
+}
+
+.check-box .box {
+    -fx-background-color:#ffffff;
+    -fx-border-color: #388e3c;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.check-box:selected {
+    -fx-background-color: #e8f5e9;
+}
+
+.radio-button {
+    -fx-text-fill: #388e3c;
+    -fx-font-size: 14px;
+}
+
+.radio-button .radio {
+    -fx-border-color: #c8e6c9;
+    -fx-border-width: 1px;
+    -fx-border-radius: 3px;
+}
+
+.radio-button:selected {
+    -fx-background-color: #e8f5e9;
+}
+
+.tooltip {
+    -fx-background-color: #66bb6a;
+    -fx-text-fill: #ffffff;
+    -fx-font-size: 12px;
+    -fx-padding: 5px;
+}
+
+.scroll-bar {
+    -fx-background-color: #f4f8f3;
+}
+
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+    -fx-background-color: #c8e6c9;
+    -fx-background-radius: 3px;
+    -fx-border-color: #388e3c;
+    -fx-border-width: 1px;
+}
+
+.scroll-bar .track {
+    -fx-background-color: #c8e6c9;
+}
+
+.scroll-bar .thumb {
+    -fx-background-color: #c8e6c9;
+    -fx-background-radius: 3px;
+    -fx-border-color: #c8e6c9;
+    -fx-border-width: 1px;
+}
+
+.scroll-bar:hover .thumb {
+    -fx-background-color: #c8e6c9;
+}
